@@ -35,3 +35,18 @@ function ListItem(itemName, itemDesc) {
   this.itemDesc = itemDesc;   //('Desc' as in 'Description') 
 } 
 
+//UI Logic
+let toDo = new ToDo();
+
+function handleFormSubmission(event) {
+  event.preventDefault();
+  const inputtedTaskName = document.querySelector("input#itemName").value;
+  const inputtedTaskDesc = document.querySelector("input#itemDesc").value;
+  let newListItem = new ListItem (inputtedTaskName, inputtedTaskDesc);
+  toDo.addListItem(newListItem);
+  console.log(toDo.toDos);
+}
+
+window.addEventListener("load", function() {
+  this.document.querySelector("form#new-todo").addEventListener("submit",handleFormSubmission)
+});
